@@ -1,24 +1,20 @@
 import pg from "pg";
 import dotenv from "dotenv";
+import fs from "fs";
 
 dotenv.config();
 
 const { Pool } = pg;
 
-const poolConfig = process.env.DATABASE_URL
-  ? { connectionString: process.env.DATABASE_URL }
-  : {
-      host: process.env.DB_HOST,
-      port: process.env.DB_PORT ? Number(process.env.DB_PORT) : undefined,
-      database: process.env.DB_NAME,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD
-    };
+const sslCertPath = process.env.PG_SSL_CERT_PATH;
 
-if (process.env.NODE_ENV === "production") {
-  poolConfig.ssl = { rejectUnauthorized: false };
-}
-
-const pool = new Pool(poolConfig);
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  max: 2,
+  ssl: {
+    ca: fs.readFileSync(sslCertPath).toString(),
+    rejectUnauthorized: true,
+  },
+});
 
 export default pool;

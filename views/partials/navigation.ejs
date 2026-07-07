@@ -1,10 +1,11 @@
 <nav aria-label="Main navigation">
   <a href="/">Home</a>
   <a href="/inventory">Inventory</a>
+  <a href="/contact">Contact</a>
   <% if (user) { %>
     <a href="/service/new">Request Service</a>
     <a href="/service/history">My Service Requests</a>
-    <% if (user.role === "employee" || user.role === "owner") { %><a href="/admin/service-requests">Manage Service</a><% } %>
+    <% if (user.role === "employee" || user.role === "owner") { %><a href="/admin/service-requests">Manage Service</a><a href="/admin/contact-messages">Messages</a><% } %>
     <a href="/account/dashboard">Dashboard</a>
     <a href="/account/logout">Logout</a>
   <% } else { %>

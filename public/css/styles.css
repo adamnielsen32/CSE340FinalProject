@@ -29,4 +29,9 @@ input, textarea, select { font: inherit; padding: .55rem; border: 1px solid #9ba
 .notice { padding: .7rem 1rem; border-radius: .3rem; }.success { background: #dff3e7; }.error { background: #f9dddd; }
 .table-wrap { overflow-x: auto; } table { width: 100%; border-collapse: collapse; background: white; } th, td { padding: .75rem; border-bottom: 1px solid #dce3e8; text-align: left; vertical-align: top; }
 .status { text-transform: capitalize; font-weight: 700; }.inline-form { display: flex; gap: .4rem; }
+.optional { color: #5c6873; font-size: .85rem; font-weight: 400; }
+.message-list { display: grid; gap: 1rem; }
+.message-card { background: white; border-left: 4px solid #244b6b; border-radius: .35rem; padding: 1rem; box-shadow: 0 2px 8px #17202a12; }
+.message-card h3, .message-card p { margin-top: 0; }
+.message-heading { display: flex; justify-content: space-between; gap: 1rem; }
 @media (max-width: 650px) { .vehicle-detail { grid-template-columns: 1fr; } .site-header { align-items: flex-start; flex-direction: column; } }

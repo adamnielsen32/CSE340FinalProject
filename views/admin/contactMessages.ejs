@@ -1,0 +1,21 @@
+<h2>Contact Messages</h2>
+
+<% if (!messages.length) { %>
+  <p>No contact messages have been submitted.</p>
+<% } else { %>
+  <div class="message-list">
+    <% messages.forEach(item => { %>
+      <article class="message-card">
+        <div class="message-heading">
+          <div>
+            <h3><%= item.subject %></h3>
+            <p><strong><%= item.name %></strong> · <a href="mailto:<%= item.email %>"><%= item.email %></a><% if (item.phone) { %> · <%= item.phone %><% } %></p>
+          </div>
+          <span class="status"><%= item.status %></span>
+        </div>
+        <p><%= item.message %></p>
+        <small>Received <%= new Date(item.created_at).toLocaleString() %><% if (item.user_id) { %> · Registered customer<% } %></small>
+      </article>
+    <% }) %>
+  </div>
+<% } %>

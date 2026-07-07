@@ -1,0 +1,31 @@
+<h2>Contact Us</h2>
+<p>Have a question about a vehicle, financing, or our services? Send us a message.</p>
+
+<% if (submitted) { %>
+  <p class="notice success">Thanks for contacting us. Your message has been received.</p>
+<% } %>
+
+<% if (errors.length) { %>
+  <div class="notice error" role="alert">
+    <% errors.forEach(error => { %><p><%= error.msg %></p><% }) %>
+  </div>
+<% } %>
+
+<form method="post" action="/contact" class="form-stack">
+  <label>Name
+    <input name="name" maxlength="100" required autocomplete="name" value="<%= oldData.name || '' %>">
+  </label>
+  <label>Email
+    <input type="email" name="email" maxlength="255" required autocomplete="email" value="<%= oldData.email || '' %>">
+  </label>
+  <label>Phone <span class="optional">(optional)</span>
+    <input type="tel" name="phone" maxlength="25" autocomplete="tel" value="<%= oldData.phone || '' %>">
+  </label>
+  <label>Subject
+    <input name="subject" maxlength="120" required value="<%= oldData.subject || '' %>">
+  </label>
+  <label>Message
+    <textarea name="message" rows="6" required><%= oldData.message || '' %></textarea>
+  </label>
+  <button type="submit">Send message</button>
+</form>

@@ -1,0 +1,12 @@
+<h2>My Service Requests</h2>
+<% if (created) { %><p class="notice success">Your service request was submitted.</p><% } %>
+<p><a class="button" href="/service/new">New service request</a></p>
+<% if (!requests.length) { %><p>You have not submitted any service requests yet.</p><% } else { %>
+<div class="table-wrap"><table><thead><tr><th>Vehicle</th><th>Service</th><th>Preferred date</th><th>Status</th><th>Submitted</th></tr></thead><tbody>
+<% requests.forEach(request => { %><tr>
+  <td><%= [request.display_year, request.display_make, request.display_model].filter(Boolean).join(" ") || "Not specified" %></td>
+  <td><strong><%= request.service_type %></strong><br><%= request.description %></td>
+  <td><%= request.preferred_date ? new Date(request.preferred_date).toLocaleDateString() : "No preference" %></td>
+  <td><span class="status"><%= request.status.replace("_", " ") %></span></td>
+  <td><%= new Date(request.created_at).toLocaleDateString() %></td>
+</tr><% }) %></tbody></table></div><% } %>

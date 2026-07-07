@@ -1,0 +1,14 @@
+<% if (!vehicles.length) { %><p>No available vehicles were found.</p><% } %>
+<div class="vehicle-grid">
+  <% vehicles.forEach(vehicle => { %>
+    <article class="card">
+      <% if (vehicle.image_url) { %><img src="<%= vehicle.image_url %>" alt="<%= vehicle.image_alt %>"><% } %>
+      <div class="card-content">
+        <p class="eyebrow"><%= vehicle.category_name %></p>
+        <h3><a href="/inventory/detail/<%= vehicle.vehicle_id %>"><%= vehicle.year %> <%= vehicle.make %> <%= vehicle.model %></a></h3>
+        <p><strong>$<%= Number(vehicle.price).toLocaleString("en-US", { minimumFractionDigits: 2 }) %></strong> · <%= Number(vehicle.mileage).toLocaleString() %> miles</p>
+        <a class="button" href="/inventory/detail/<%= vehicle.vehicle_id %>">View details</a>
+      </div>
+    </article>
+  <% }) %>
+</div>

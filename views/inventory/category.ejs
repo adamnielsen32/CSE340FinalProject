@@ -1,0 +1,6 @@
+<h2><%= category.category_name %></h2>
+<p><%= category.description %></p>
+<div class="category-links"><a href="/inventory">All vehicles</a>
+  <% categories.forEach(item => { %><a href="/inventory/category/<%= item.category_id %>"><%= item.category_name %></a><% }) %>
+</div>
+<%- include("vehicleGrid", { vehicles }) %>

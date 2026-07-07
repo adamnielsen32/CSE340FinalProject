@@ -1,0 +1,12 @@
+<h2>Request Service</h2>
+<p>Tell us about your vehicle and the work it needs.</p>
+<% if (errors.length) { %><div class="notice error"><% errors.forEach(error => { %><p><%= error %></p><% }) %></div><% } %>
+<form method="post" action="/service/new" class="form-stack">
+  <label>Vehicle year <input type="number" name="vehicleYear" min="1900" max="2100" value="<%= oldData.vehicleYear || '' %>"></label>
+  <label>Vehicle make <input name="vehicleMake" maxlength="50" value="<%= oldData.vehicleMake || '' %>"></label>
+  <label>Vehicle model <input name="vehicleModel" maxlength="50" value="<%= oldData.vehicleModel || '' %>"></label>
+  <label>Service type <input name="serviceType" maxlength="80" required value="<%= oldData.serviceType || '' %>"></label>
+  <label>Description <textarea name="description" rows="5" required><%= oldData.description || '' %></textarea></label>
+  <label>Preferred date <input type="date" name="preferredDate" value="<%= oldData.preferredDate || '' %>"></label>
+  <button type="submit">Submit request</button>
+</form>

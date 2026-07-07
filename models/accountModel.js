@@ -2,7 +2,7 @@ import pool from "../utilities/database.js";
 
 export async function createUser(firstName, lastName, email, hashedPassword) {
   const sql = `
-    INSERT INTO users (first_name, last_name, email, password)
+    INSERT INTO users (first_name, last_name, email, password_hash)
     VALUES ($1, $2, $3, $4)
     RETURNING user_id, first_name, last_name, email, role
   `;
@@ -19,7 +19,7 @@ export async function createUser(firstName, lastName, email, hashedPassword) {
 
 export async function getUserByEmail(email) {
   const sql = `
-    SELECT user_id, first_name, last_name, email, password, role
+    SELECT user_id, first_name, last_name, email, password_hash, role
     FROM users
     WHERE email = $1
   `;

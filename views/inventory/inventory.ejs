@@ -1,0 +1,8 @@
+<h2>Vehicle Inventory</h2>
+<p>Browse all available vehicles or narrow the list by category.</p>
+<div class="category-links">
+  <% categories.forEach(category => { %>
+    <a href="/inventory/category/<%= category.category_id %>"><%= category.category_name %> (<%= category.vehicle_count %>)</a>
+  <% }) %>
+</div>
+<%- include("vehicleGrid", { vehicles }) %>

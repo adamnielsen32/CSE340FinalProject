@@ -1,5 +1,6 @@
 import express from "express";
 import { checkEmployee, checkOwner } from "../middleware/auth.js";
+import { showAllRequests, changeStatus } from "../controllers/serviceController.js";
 
 const router = express.Router();
 
@@ -14,5 +15,8 @@ router.get("/owner", checkOwner, (req, res) => {
     title: "Owner Dashboard",
   });
 });
+
+router.get("/service-requests", checkEmployee, showAllRequests);
+router.post("/service-requests/:id/status", checkEmployee, changeStatus);
 
 export default router;

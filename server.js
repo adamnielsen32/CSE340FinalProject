@@ -4,6 +4,8 @@ import expressLayouts from "express-ejs-layouts";
 import session from "express-session";
 import accountRoute from "./routes/accountRoute.js";
 import adminRoute from "./routes/adminRoute.js";
+import inventoryRoute from "./routes/inventoryRoute.js";
+import serviceRoute from "./routes/serviceRoute.js";
 
 dotenv.config();
 
@@ -37,9 +39,17 @@ app.use((req, res, next) => {
 
 app.use("/account", accountRoute);
 app.use("/admin", adminRoute);
+app.use("/inventory", inventoryRoute);
+app.use("/service", serviceRoute);
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("index", { title: "Used Car Dealership" });
+});
+
+app.use((req, res) => res.status(404).render("errors/error", { title: "Page Not Found", message: "The page you requested could not be found." }));
+app.use((error, req, res, next) => {
+  console.error(error);
+  res.status(500).render("errors/error", { title: "Something Went Wrong", message: "We could not complete your request. Please try again." });
 });
 
 const port = process.env.PORT || 5500;

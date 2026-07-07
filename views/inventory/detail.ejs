@@ -1,0 +1,17 @@
+<p><a href="/inventory">← Back to inventory</a></p>
+<article class="vehicle-detail">
+  <% if (vehicle.image_url) { %><img src="<%= vehicle.image_url %>" alt="<%= vehicle.image_alt %>"><% } %>
+  <div>
+    <p class="eyebrow"><%= vehicle.category_name %></p>
+    <h2><%= vehicle.year %> <%= vehicle.make %> <%= vehicle.model %> <%= vehicle.trim || "" %></h2>
+    <p class="price">$<%= Number(vehicle.price).toLocaleString("en-US", { minimumFractionDigits: 2 }) %></p>
+    <p><%= vehicle.description %></p>
+    <dl>
+      <dt>Mileage</dt><dd><%= Number(vehicle.mileage).toLocaleString() %> miles</dd>
+      <dt>Color</dt><dd><%= vehicle.color || "Not listed" %></dd>
+      <dt>Transmission</dt><dd><%= vehicle.transmission || "Not listed" %></dd>
+      <dt>Fuel type</dt><dd><%= vehicle.fuel_type || "Not listed" %></dd>
+      <dt>VIN</dt><dd><%= vehicle.vin || "Not listed" %></dd>
+    </dl>
+  </div>
+</article>

@@ -4,4 +4,8 @@
 
 <p>Your role is: <%= user.role %></p>
 
+<p><a href="/service/new">Request service</a> · <a href="/service/history">View my service requests</a></p>
+
+<% if (user.role === "employee" || user.role === "owner") { %><p><a href="/admin/service-requests">Manage all service requests</a></p><% } %>
+
 <a href="/account/logout">Logout</a>

@@ -58,7 +58,7 @@ export async function loginUser(req, res, next) {
       });
     }
 
-    const passwordMatches = await bcrypt.compare(password, user.password);
+    const passwordMatches = await bcrypt.compare(password, user.password_hash);
 
     if (!passwordMatches) {
       return res.render("account/login", {

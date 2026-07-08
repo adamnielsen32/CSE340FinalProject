@@ -7,6 +7,7 @@ import adminRoute from "./routes/adminRoute.js";
 import inventoryRoute from "./routes/inventoryRoute.js";
 import serviceRoute from "./routes/serviceRoute.js";
 import contactRoute from "./routes/contactRoute.js";
+import reviewRoute from "./routes/reviewRoute.js";
 
 dotenv.config();
 
@@ -43,6 +44,7 @@ app.use("/admin", adminRoute);
 app.use("/inventory", inventoryRoute);
 app.use("/service", serviceRoute);
 app.use("/contact", contactRoute);
+app.use("/reviews", reviewRoute);
 
 app.get("/", (req, res) => {
   res.render("index", { title: "Used Car Dealership" });

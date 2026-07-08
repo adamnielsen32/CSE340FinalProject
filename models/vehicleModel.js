@@ -7,7 +7,11 @@ const vehicleSelect = `
       ORDER BY vi.is_primary DESC, vi.display_order, vi.image_id LIMIT 1) AS image_url,
     (SELECT vi.alt_text FROM vehicle_images vi
       WHERE vi.vehicle_id = v.vehicle_id
-      ORDER BY vi.is_primary DESC, vi.display_order, vi.image_id LIMIT 1) AS image_alt
+      ORDER BY vi.is_primary DESC, vi.display_order, vi.image_id LIMIT 1) AS image_alt,
+    (SELECT ROUND(AVG(r.rating)::numeric, 1)
+      FROM reviews r WHERE r.vehicle_id = v.vehicle_id) AS average_rating,
+    (SELECT COUNT(*)::int
+      FROM reviews r WHERE r.vehicle_id = v.vehicle_id) AS review_count
   FROM vehicles v
   JOIN categories c ON c.category_id = v.category_id`;
 

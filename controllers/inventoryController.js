@@ -1,4 +1,5 @@
 import { getAllVehicles, getCategories, getCategoryById, getVehiclesByCategory, getVehicleById } from "../models/vehicleModel.js";
+import { getReviewsByVehicle } from "../models/reviewModel.js";
 
 export async function showInventory(req, res, next) {
   try {
@@ -21,6 +22,12 @@ export async function showVehicle(req, res, next) {
   try {
     const vehicle = await getVehicleById(req.params.vehicleId);
     if (!vehicle) return res.status(404).render("errors/error", { title: "Vehicle Not Found", message: "That vehicle does not exist." });
-    res.render("inventory/detail", { title: `${vehicle.year} ${vehicle.make} ${vehicle.model}`, vehicle });
+    const reviews = await getReviewsByVehicle(vehicle.vehicle_id);
+    const averageRating = reviews.length ? reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length : null;
+    res.render("inventory/detail", {
+      title: `${vehicle.year} ${vehicle.make} ${vehicle.model}`,
+      vehicle, reviews, averageRating, reviewErrors: [], reviewData: {},
+      reviewAdded: req.query.reviewAdded === "1",
+    });
   } catch (error) { next(error); }
 }

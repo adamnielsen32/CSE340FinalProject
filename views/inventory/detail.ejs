@@ -1,4 +1,4 @@
-<p><a href="/inventory">← Back to inventory</a></p>
+<p><a href="/inventory">&larr; Back to inventory</a></p>
 <article class="vehicle-detail">
   <% if (vehicle.image_url) { %><img src="<%= vehicle.image_url %>" alt="<%= vehicle.image_alt %>"><% } %>
   <div>
@@ -15,3 +15,64 @@
     </dl>
   </div>
 </article>
+
+<section id="reviews" class="reviews-section">
+  <div class="reviews-heading">
+    <h2>Customer Reviews</h2>
+    <% if (averageRating !== null) { %>
+      <p><span class="stars" aria-label="<%= averageRating.toFixed(1) %> out of 5 stars"><%= "★".repeat(Math.round(averageRating)) %><%= "☆".repeat(5 - Math.round(averageRating)) %></span> <strong><%= averageRating.toFixed(1) %></strong> from <%= reviews.length %> review<%= reviews.length === 1 ? "" : "s" %></p>
+    <% } %>
+  </div>
+
+  <% if (reviewAdded) { %><p class="notice success">Your review was added.</p><% } %>
+
+  <% if (user) { %>
+    <div class="review-form">
+      <h3>Write a review</h3>
+      <% if (reviewErrors.length) { %>
+        <div class="notice error" role="alert"><% reviewErrors.forEach(error => { %><p><%= error.msg %></p><% }) %></div>
+      <% } %>
+      <form method="post" action="/reviews/vehicle/<%= vehicle.vehicle_id %>" class="form-stack">
+        <label>Rating
+          <select name="rating" required>
+            <option value="">Choose a rating</option>
+            <% [5, 4, 3, 2, 1].forEach(rating => { %><option value="<%= rating %>" <%= Number(reviewData.rating) === rating ? "selected" : "" %>><%= rating %> star<%= rating === 1 ? "" : "s" %></option><% }) %>
+          </select>
+        </label>
+        <label>Title <span class="optional">(optional)</span>
+          <input name="title" maxlength="100" value="<%= reviewData.title || '' %>">
+        </label>
+        <label>Review
+          <textarea name="body" rows="4" required><%= reviewData.body || '' %></textarea>
+        </label>
+        <button type="submit">Post review</button>
+      </form>
+    </div>
+  <% } else { %>
+    <p><a href="/account/login">Log in</a> to write a review.</p>
+  <% } %>
+
+  <% if (!reviews.length) { %>
+    <p>No reviews yet. Be the first to review this vehicle.</p>
+  <% } else { %>
+    <div class="review-list">
+      <% reviews.forEach(review => { %>
+        <article class="review-card">
+          <div class="review-meta">
+            <div>
+              <span class="stars" aria-label="<%= review.rating %> out of 5 stars"><%= "★".repeat(review.rating) %><%= "☆".repeat(5 - review.rating) %></span>
+              <% if (review.title) { %><h3><%= review.title %></h3><% } %>
+              <p>By <strong><%= review.first_name %> <%= review.last_name.charAt(0) %>.</strong> on <%= new Date(review.created_at).toLocaleDateString() %></p>
+            </div>
+            <% if (user && (user.userId === review.user_id || user.role === "employee" || user.role === "owner")) { %>
+              <form method="post" action="/reviews/<%= review.review_id %>/delete" onsubmit="return confirm('Delete this review?');">
+                <button type="submit" class="button-danger"><%= user.userId === review.user_id ? "Delete my review" : "Remove review" %></button>
+              </form>
+            <% } %>
+          </div>
+          <p><%= review.body %></p>
+        </article>
+      <% }) %>
+    </div>
+  <% } %>
+</section>

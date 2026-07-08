@@ -6,7 +6,16 @@
       <div class="card-content">
         <p class="eyebrow"><%= vehicle.category_name %></p>
         <h3><a href="/inventory/detail/<%= vehicle.vehicle_id %>"><%= vehicle.year %> <%= vehicle.make %> <%= vehicle.model %></a></h3>
-        <p><strong>$<%= Number(vehicle.price).toLocaleString("en-US", { minimumFractionDigits: 2 }) %></strong> · <%= Number(vehicle.mileage).toLocaleString() %> miles</p>
+        <% if (vehicle.review_count > 0) { %>
+          <p class="card-rating">
+            <span class="stars" aria-label="<%= Number(vehicle.average_rating).toFixed(1) %> out of 5 stars"><%= "★".repeat(Math.round(Number(vehicle.average_rating))) %><%= "☆".repeat(5 - Math.round(Number(vehicle.average_rating))) %></span>
+            <strong><%= Number(vehicle.average_rating).toFixed(1) %></strong>
+            <span>(<%= vehicle.review_count %> review<%= vehicle.review_count === 1 ? "" : "s" %>)</span>
+          </p>
+        <% } else { %>
+          <p class="card-rating no-reviews">No reviews yet</p>
+        <% } %>
+        <p><strong>$<%= Number(vehicle.price).toLocaleString("en-US", { minimumFractionDigits: 2 }) %></strong> &middot; <%= Number(vehicle.mileage).toLocaleString() %> miles</p>
         <a class="button" href="/inventory/detail/<%= vehicle.vehicle_id %>">View details</a>
       </div>
     </article>

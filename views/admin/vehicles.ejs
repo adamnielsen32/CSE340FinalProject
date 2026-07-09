@@ -1,0 +1,58 @@
+<h2>Manage Vehicles</h2>
+
+<p><a class="button" href="/admin/vehicles/new">Add vehicle</a></p>
+
+<% if (message) { %><p class="notice success"><%= message %></p><% } %>
+<% if (error) { %><p class="notice error"><%= error %></p><% } %>
+
+<% if (!vehicles.length) { %>
+  <p>No vehicles have been added yet.</p>
+<% } else { %>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Vehicle</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Status</th>
+          <th>Reviews</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% vehicles.forEach(vehicle => { %>
+          <tr>
+            <td>
+              <strong><%= vehicle.year %> <%= vehicle.make %> <%= vehicle.model %></strong>
+              <% if (vehicle.trim) { %><br><%= vehicle.trim %><% } %>
+              <% if (vehicle.vin) { %><br><span class="optional">VIN: <%= vehicle.vin %></span><% } %>
+            </td>
+            <td><%= vehicle.category_name %></td>
+            <td>$<%= Number(vehicle.price).toLocaleString("en-US", { minimumFractionDigits: 2 }) %></td>
+            <td>
+              <span class="status"><%= vehicle.is_available ? "Available" : "Unavailable" %></span>
+              <% if (vehicle.is_featured) { %><br><span class="optional">Featured</span><% } %>
+            </td>
+            <td>
+              <% if (vehicle.review_count > 0) { %>
+                <%= Number(vehicle.average_rating).toFixed(1) %> / 5
+                <br><span class="optional"><%= vehicle.review_count %> review<%= vehicle.review_count === 1 ? "" : "s" %></span>
+              <% } else { %>
+                <span class="optional">No reviews</span>
+              <% } %>
+            </td>
+            <td>
+              <div class="action-list">
+                <a class="button" href="/admin/vehicles/<%= vehicle.vehicle_id %>/edit">Edit</a>
+                <form method="post" action="/admin/vehicles/<%= vehicle.vehicle_id %>/delete" onsubmit="return confirm('Delete this vehicle?');">
+                  <button class="button-danger" type="submit">Delete</button>
+                </form>
+              </div>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+<% } %>

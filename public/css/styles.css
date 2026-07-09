@@ -28,9 +28,14 @@ dt { font-weight: 700; } dd { margin: 0; }
 .form-stack { max-width: 600px; display: grid; gap: 1rem; }
 .form-stack label { display: grid; gap: .3rem; font-weight: 600; }
 input, textarea, select { font: inherit; padding: .55rem; border: 1px solid #9baab5; border-radius: .25rem; }
+button:disabled { background: #9baab5; cursor: not-allowed; }
 .notice { padding: .7rem 1rem; border-radius: .3rem; }.success { background: #dff3e7; }.error { background: #f9dddd; }
 .table-wrap { overflow-x: auto; } table { width: 100%; border-collapse: collapse; background: white; } th, td { padding: .75rem; border-bottom: 1px solid #dce3e8; text-align: left; vertical-align: top; }
 .status { text-transform: capitalize; font-weight: 700; }.inline-form { display: flex; gap: .4rem; }
+.action-list { display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; }
+.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+.checkbox-label { display: flex !important; grid-template-columns: auto 1fr; align-items: center; gap: .5rem !important; }
+.checkbox-label input { width: auto; }
 .optional { color: #5c6873; font-size: .85rem; font-weight: 400; }
 .message-list { display: grid; gap: 1rem; }
 .message-card { background: white; border-left: 4px solid #244b6b; border-radius: .35rem; padding: 1rem; box-shadow: 0 2px 8px #17202a12; }

@@ -1,0 +1,25 @@
+<h2><%= title %></h2>
+
+<p><a href="/admin/categories">&larr; Back to categories</a></p>
+
+<% if (errors.length) { %>
+  <div class="notice error">
+    <ul>
+      <% errors.forEach(error => { %><li><%= error %></li><% }) %>
+    </ul>
+  </div>
+<% } %>
+
+<form method="post" action="<%= action %>" class="form-stack">
+  <label>
+    Category name
+    <input name="categoryName" maxlength="50" required value="<%= category.categoryName || category.category_name || '' %>">
+  </label>
+
+  <label>
+    Description
+    <textarea name="description" rows="4"><%= category.description || '' %></textarea>
+  </label>
+
+  <button type="submit"><%= submitLabel %></button>
+</form>

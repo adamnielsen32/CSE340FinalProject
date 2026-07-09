@@ -6,6 +6,7 @@
     <a href="/service/new">Request Service</a>
     <a href="/service/history">My Service Requests</a>
     <% if (user.role === "employee" || user.role === "owner") { %><a href="/admin/service-requests">Manage Service</a><a href="/admin/contact-messages">Messages</a><% } %>
+    <% if (user.role === "owner") { %><a href="/admin/vehicles">Vehicles</a><a href="/admin/categories">Categories</a><% } %>
     <a href="/account/dashboard">Dashboard</a>
     <a href="/account/logout">Logout</a>
   <% } else { %>

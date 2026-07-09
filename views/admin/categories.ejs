@@ -1,0 +1,43 @@
+<h2>Manage Categories</h2>
+
+<p><a class="button" href="/admin/categories/new">Add category</a></p>
+
+<% if (message) { %><p class="notice success"><%= message %></p><% } %>
+<% if (error) { %><p class="notice error"><%= error %></p><% } %>
+
+<% if (!categories.length) { %>
+  <p>No categories have been added yet.</p>
+<% } else { %>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Description</th>
+          <th>Vehicles</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% categories.forEach(category => { %>
+          <tr>
+            <td><strong><%= category.category_name %></strong></td>
+            <td><%= category.description || "No description" %></td>
+            <td><%= category.vehicle_count %></td>
+            <td>
+              <div class="action-list">
+                <a class="button" href="/admin/categories/<%= category.category_id %>/edit">Edit</a>
+                <form method="post" action="/admin/categories/<%= category.category_id %>/delete" onsubmit="return confirm('Delete this category?');">
+                  <button class="button-danger" type="submit" <%= category.vehicle_count > 0 ? "disabled" : "" %>>Delete</button>
+                </form>
+              </div>
+              <% if (category.vehicle_count > 0) { %>
+                <p class="optional">Move or delete vehicles before removing this category.</p>
+              <% } %>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+<% } %>

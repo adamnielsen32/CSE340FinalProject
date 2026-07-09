@@ -8,4 +8,9 @@
   <li><a href="/admin/service-requests">Manage service requests</a></li>
   <li>Moderate reviews</li>
   <li><a href="/admin/contact-messages">View contact messages</a></li>
+  <% if (user.role === "owner") { %>
+    <li><a href="/admin/owner">Owner dashboard</a></li>
+    <li><a href="/admin/vehicles">Manage vehicles</a></li>
+    <li><a href="/admin/categories">Manage categories</a></li>
+  <% } %>
 </ul>

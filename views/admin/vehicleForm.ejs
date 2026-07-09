@@ -1,0 +1,66 @@
+<h2><%= title %></h2>
+
+<p><a href="/admin/vehicles">&larr; Back to vehicles</a></p>
+
+<% if (errors.length) { %>
+  <div class="notice error">
+    <ul>
+      <% errors.forEach(error => { %><li><%= error %></li><% }) %>
+    </ul>
+  </div>
+<% } %>
+
+<form method="post" action="<%= action %>" class="form-stack">
+  <label>
+    Category
+    <select name="categoryId" required>
+      <option value="">Choose a category</option>
+      <% categories.forEach(category => { %>
+        <option value="<%= category.category_id %>" <%= Number(vehicle.categoryId || vehicle.category_id) === category.category_id ? "selected" : "" %>>
+          <%= category.category_name %>
+        </option>
+      <% }) %>
+    </select>
+  </label>
+
+  <div class="form-grid">
+    <label>Year <input type="number" name="year" min="1900" max="2100" required value="<%= vehicle.year || '' %>"></label>
+    <label>Make <input name="make" maxlength="50" required value="<%= vehicle.make || '' %>"></label>
+    <label>Model <input name="model" maxlength="50" required value="<%= vehicle.model || '' %>"></label>
+    <label>Trim <input name="trim" maxlength="80" value="<%= vehicle.trim || '' %>"></label>
+  </div>
+
+  <div class="form-grid">
+    <label>VIN <input name="vin" maxlength="17" value="<%= vehicle.vin || '' %>"></label>
+    <label>Mileage <input type="number" name="mileage" min="0" required value="<%= vehicle.mileage ?? '' %>"></label>
+    <label>Price <input type="number" name="price" min="0" step="0.01" required value="<%= vehicle.price || '' %>"></label>
+    <label>Color <input name="color" maxlength="40" value="<%= vehicle.color || '' %>"></label>
+  </div>
+
+  <div class="form-grid">
+    <label>Transmission <input name="transmission" maxlength="40" value="<%= vehicle.transmission || '' %>"></label>
+    <label>Fuel type <input name="fuelType" maxlength="40" value="<%= vehicle.fuelType || vehicle.fuel_type || '' %>"></label>
+  </div>
+
+  <label>
+    Description
+    <textarea name="description" rows="5" required><%= vehicle.description || '' %></textarea>
+  </label>
+
+  <div class="form-grid">
+    <label>Image URL <input name="imageUrl" value="<%= vehicle.imageUrl || vehicle.image_url || '' %>"></label>
+    <label>Image alt text <input name="imageAlt" maxlength="255" value="<%= vehicle.imageAlt || vehicle.image_alt || '' %>"></label>
+  </div>
+
+  <label class="checkbox-label">
+    <input type="checkbox" name="isFeatured" <%= vehicle.isFeatured || vehicle.is_featured ? "checked" : "" %>>
+    Featured vehicle
+  </label>
+
+  <label class="checkbox-label">
+    <input type="checkbox" name="isAvailable" <%= vehicle.isAvailable === false || vehicle.is_available === false ? "" : "checked" %>>
+    Available on public inventory pages
+  </label>
+
+  <button type="submit"><%= submitLabel %></button>
+</form>

@@ -20,6 +20,14 @@ export async function getAllVehicles() {
   return result.rows;
 }
 
+export async function getFeaturedVehicles(limit = 3) {
+  const result = await pool.query(`${vehicleSelect}
+    WHERE v.is_available = TRUE AND v.is_featured = TRUE
+    ORDER BY v.year DESC, v.make, v.model
+    LIMIT $1`, [limit]);
+  return result.rows;
+}
+
 export async function getAllVehiclesForAdmin() {
   const result = await pool.query(`${vehicleSelect} ORDER BY v.year DESC, v.make, v.model`);
   return result.rows;

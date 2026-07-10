@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+  <title id="title">Blue 2022 Ford F-150 XLT</title>
+  <desc id="desc">A blue pickup truck illustration on a light background.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#e9f3fb"/>
+      <stop offset="1" stop-color="#f7fafc"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0" x2="1">
+      <stop offset="0" stop-color="#163f73"/>
+      <stop offset=".55" stop-color="#2d78be"/>
+      <stop offset="1" stop-color="#102d52"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="520" fill="url(#bg)"/>
+  <path d="M98 335h700c31 0 57 25 57 57v14H52v-14c0-31 25-57 46-57z" fill="#17324d" opacity=".13"/>
+  <path d="M135 294h88l72-84c16-19 40-30 65-30h161c31 0 59 17 74 44l39 70h126c31 0 56 25 56 56v32H86v-39c0-27 22-49 49-49z" fill="url(#body)" stroke="#0f2c4a" stroke-width="9"/>
+  <path d="M322 220l-59 72h143v-82h-47c-14 0-28 3-37 10z" fill="#d9edf9" opacity=".9"/>
+  <path d="M432 210v82h151l-34-58c-9-15-25-24-42-24H432z" fill="#d9edf9" opacity=".9"/>
+  <path d="M631 294h134v-56H603z" fill="#1b5f9b"/>
+  <rect x="726" y="309" width="74" height="30" rx="15" fill="#ffd36b"/>
+  <rect x="104" y="311" width="76" height="28" rx="14" fill="#fff4cc"/>
+  <circle cx="252" cy="385" r="63" fill="#17202a"/>
+  <circle cx="252" cy="385" r="32" fill="#dfe7ed"/>
+  <circle cx="654" cy="385" r="63" fill="#17202a"/>
+  <circle cx="654" cy="385" r="32" fill="#dfe7ed"/>
+  <text x="450" y="88" text-anchor="middle" fill="#17324d" font-family="Arial, sans-serif" font-size="40" font-weight="700">2022 Ford F-150</text>
+</svg>

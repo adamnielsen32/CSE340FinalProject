@@ -8,6 +8,7 @@ import inventoryRoute from "./routes/inventoryRoute.js";
 import serviceRoute from "./routes/serviceRoute.js";
 import contactRoute from "./routes/contactRoute.js";
 import reviewRoute from "./routes/reviewRoute.js";
+import { showHome } from "./controllers/homeController.js";
 
 dotenv.config();
 
@@ -46,9 +47,11 @@ app.use("/service", serviceRoute);
 app.use("/contact", contactRoute);
 app.use("/reviews", reviewRoute);
 
-app.get("/", (req, res) => {
-  res.render("index", { title: "Used Car Dealership" });
+app.get("/images/vehicles/:imageName.jpg", (req, res) => {
+  res.redirect(`/images/vehicles/${req.params.imageName}.svg`);
 });
+
+app.get("/", showHome);
 
 app.use((req, res) => res.status(404).render("errors/error", { title: "Page Not Found", message: "The page you requested could not be found." }));
 app.use((error, req, res, next) => {

@@ -23,10 +23,10 @@ VALUES
 
 INSERT INTO vehicle_images (vehicle_id, image_url, alt_text, is_primary, display_order)
 VALUES
-  (1, '/images/vehicles/honda-accord.jpg', 'Silver 2021 Honda Accord EX-L', TRUE, 1),
-  (2, '/images/vehicles/ford-f150.jpg', 'Blue 2022 Ford F-150 XLT', TRUE, 1),
-  (3, '/images/vehicles/hyundai-santa-fe.jpg', 'White 2020 Hyundai Santa Fe SEL', TRUE, 1),
-  (4, '/images/vehicles/chrysler-pacifica.jpg', 'Black 2021 Chrysler Pacifica Touring L', TRUE, 1);
+  (1, '/images/vehicles/honda-accord.svg', 'Silver 2021 Honda Accord EX-L', TRUE, 1),
+  (2, '/images/vehicles/ford-f150.svg', 'Blue 2022 Ford F-150 XLT', TRUE, 1),
+  (3, '/images/vehicles/hyundai-santa-fe.svg', 'White 2020 Hyundai Santa Fe SEL', TRUE, 1),
+  (4, '/images/vehicles/chrysler-pacifica.svg', 'Black 2021 Chrysler Pacifica Touring L', TRUE, 1);
 
 INSERT INTO reviews (vehicle_id, user_id, rating, title, body)
 VALUES

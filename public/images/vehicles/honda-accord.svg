@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+  <title id="title">Silver 2021 Honda Accord EX-L</title>
+  <desc id="desc">A silver sedan illustration on a dealership-style blue background.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#d8e5ef"/>
+      <stop offset="1" stop-color="#f8fbfd"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0" x2="1">
+      <stop offset="0" stop-color="#b7c2ca"/>
+      <stop offset=".5" stop-color="#edf2f5"/>
+      <stop offset="1" stop-color="#8b99a3"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="520" fill="url(#bg)"/>
+  <circle cx="730" cy="115" r="95" fill="#ffffff" opacity=".45"/>
+  <path d="M115 330h670c26 0 47 21 47 47v18H68v-18c0-26 21-47 47-47z" fill="#17324d" opacity=".14"/>
+  <path d="M168 296l68-92c18-25 47-39 78-39h246c34 0 65 17 84 45l58 86h55c32 0 58 26 58 58v27H86v-31c0-30 24-54 54-54h28z" fill="url(#body)" stroke="#667681" stroke-width="9"/>
+  <path d="M265 214l-57 78h179v-87h-74c-19 0-36 9-48 9z" fill="#244b6b"/>
+  <path d="M413 205v87h244l-51-72c-9-9-27-15-43-15H413z" fill="#244b6b"/>
+  <rect x="704" y="307" width="76" height="28" rx="14" fill="#ffd36b"/>
+  <rect x="113" y="309" width="70" height="26" rx="13" fill="#fff4cc"/>
+  <circle cx="241" cy="383" r="58" fill="#17202a"/>
+  <circle cx="241" cy="383" r="30" fill="#dfe7ed"/>
+  <circle cx="655" cy="383" r="58" fill="#17202a"/>
+  <circle cx="655" cy="383" r="30" fill="#dfe7ed"/>
+  <text x="450" y="88" text-anchor="middle" fill="#17324d" font-family="Arial, sans-serif" font-size="40" font-weight="700">2021 Honda Accord</text>
+</svg>

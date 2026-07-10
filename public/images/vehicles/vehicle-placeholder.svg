@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+  <title id="title">Vehicle image placeholder</title>
+  <desc id="desc">A simple vehicle placeholder illustration.</desc>
+  <rect width="900" height="520" fill="#dfe7ed"/>
+  <path d="M150 310h600c36 0 65 29 65 65v20H85v-20c0-36 29-65 65-65z" fill="#17324d" opacity=".15"/>
+  <path d="M170 300l75-85c22-25 54-39 87-39h230c34 0 66 16 86 43l61 81h42c34 0 62 28 62 62v28H88v-35c0-30 25-55 55-55h27z" fill="#9baab5" stroke="#667681" stroke-width="9"/>
+  <circle cx="260" cy="390" r="58" fill="#17202a"/>
+  <circle cx="260" cy="390" r="30" fill="#dfe7ed"/>
+  <circle cx="650" cy="390" r="58" fill="#17202a"/>
+  <circle cx="650" cy="390" r="30" fill="#dfe7ed"/>
+  <text x="450" y="100" text-anchor="middle" fill="#17324d" font-family="Arial, sans-serif" font-size="40" font-weight="700">Vehicle Image</text>
+</svg>

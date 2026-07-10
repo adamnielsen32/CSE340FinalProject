@@ -1,3 +1,43 @@
-<h2>Home Page</h2>
+<section class="hero">
+  <div>
+    <p class="eyebrow">Used car dealership</p>
+    <h2>Find a dependable vehicle and keep it running strong.</h2>
+    <p>
+      Browse our current inventory, read customer reviews, send us a question,
+      or request service from your account.
+    </p>
+    <div class="hero-actions">
+      <a class="button" href="/inventory">Browse inventory</a>
+      <a class="button secondary-button" href="/contact">Contact us</a>
+    </div>
+  </div>
 
-<p>Project setup is working!</p>
+  <% if (featuredVehicles.length) { %>
+    <% const heroVehicle = featuredVehicles[0]; %>
+    <article class="featured-hero-card">
+      <% if (heroVehicle.image_url) { %>
+        <img src="<%= heroVehicle.image_url %>" alt="<%= heroVehicle.image_alt %>" onerror="this.onerror=null;this.src='/images/vehicles/vehicle-placeholder.svg';">
+      <% } %>
+      <div>
+        <p class="eyebrow">Featured vehicle</p>
+        <h3><%= heroVehicle.year %> <%= heroVehicle.make %> <%= heroVehicle.model %></h3>
+        <p class="price">$<%= Number(heroVehicle.price).toLocaleString("en-US", { minimumFractionDigits: 2 }) %></p>
+        <p><%= Number(heroVehicle.mileage).toLocaleString() %> miles &middot; <%= heroVehicle.category_name %></p>
+        <a class="button" href="/inventory/detail/<%= heroVehicle.vehicle_id %>">View details</a>
+      </div>
+    </article>
+  <% } %>
+</section>
+
+<section>
+  <div class="section-heading">
+    <h2>Featured vehicles</h2>
+    <a href="/inventory">View all inventory</a>
+  </div>
+
+  <% if (featuredVehicles.length) { %>
+    <%- include("inventory/vehicleGrid", { vehicles: featuredVehicles }) %>
+  <% } else { %>
+    <p>No featured vehicles are available right now.</p>
+  <% } %>
+</section>

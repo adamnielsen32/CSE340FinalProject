@@ -2,7 +2,7 @@
 <div class="vehicle-grid">
   <% vehicles.forEach(vehicle => { %>
     <article class="card">
-      <% if (vehicle.image_url) { %><img src="<%= vehicle.image_url %>" alt="<%= vehicle.image_alt %>"><% } %>
+      <% if (vehicle.image_url) { %><img src="<%= vehicle.image_url %>" alt="<%= vehicle.image_alt %>" onerror="this.onerror=null;this.src='/images/vehicles/vehicle-placeholder.svg';"><% } %>
       <div class="card-content">
         <p class="eyebrow"><%= vehicle.category_name %></p>
         <h3><a href="/inventory/detail/<%= vehicle.vehicle_id %>"><%= vehicle.year %> <%= vehicle.make %> <%= vehicle.model %></a></h3>

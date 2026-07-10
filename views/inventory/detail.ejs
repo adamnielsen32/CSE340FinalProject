@@ -1,6 +1,6 @@
 <p><a href="/inventory">&larr; Back to inventory</a></p>
 <article class="vehicle-detail">
-  <% if (vehicle.image_url) { %><img src="<%= vehicle.image_url %>" alt="<%= vehicle.image_alt %>"><% } %>
+  <% if (vehicle.image_url) { %><img src="<%= vehicle.image_url %>" alt="<%= vehicle.image_alt %>" onerror="this.onerror=null;this.src='/images/vehicles/vehicle-placeholder.svg';"><% } %>
   <div>
     <p class="eyebrow"><%= vehicle.category_name %></p>
     <h2><%= vehicle.year %> <%= vehicle.make %> <%= vehicle.model %> <%= vehicle.trim || "" %></h2>
